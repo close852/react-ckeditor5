@@ -1,5 +1,5 @@
 class MyUploadAdapter {
-    constructor( loader ) {
+    constructor(loader) {
         // The file loader instance to use during the upload.
         this.loader = loader;
     }
@@ -12,18 +12,18 @@ class MyUploadAdapter {
         // integration to choose the right communication channel. This example uses
         // a POST request with JSON as a data structure but your configuration
         // could be different.
-        xhr.open( 'POST', '/api/upload', true );
+        xhr.open('POST', '/api/upload', true);
         xhr.responseType = 'json';
     }
-    _initListeners( resolve, reject, file ) {
-        console.log('_initListeners ....');
+    _initListeners(resolve, reject, file) {
+        console.log('_initListeners ....', file);
         const xhr = this.xhr;
         const loader = this.loader;
-        const genericErrorText = `Couldn't upload file: ${ file.name }.`;
+        const genericErrorText = `Couldn't upload file: ${file.name}.`;
 
-        xhr.addEventListener( 'error', () => reject( genericErrorText ) );
-        xhr.addEventListener( 'abort', () => reject() );
-        xhr.addEventListener( 'load', () => {
+        xhr.addEventListener('error', () => reject(genericErrorText));
+        xhr.addEventListener('abort', () => reject());
+        xhr.addEventListener('load', () => {
             const response = xhr.response;
 
             // This example assumes the XHR server's "response" object will come with
@@ -32,36 +32,36 @@ class MyUploadAdapter {
             //
             // Your integration may handle upload errors in a different way so make sure
             // it is done properly. The reject() function must be called when the upload fails.
-            if ( !response || response.error ) {
-                return reject( response && response.error ? response.error.message : genericErrorText );
+            if (!response || response.error) {
+                return reject(response && response.error ? response.error.message : genericErrorText);
             }
 
             // If the upload is successful, resolve the upload promise with an object containing
             // at least the "default" URL, pointing to the image on the server.
             // This URL will be used to display the image in the content. Learn more in the
             // UploadAdapter#upload documentation.
-            resolve( {
+            resolve({
                 default: response.url
-            } );
-        } );
+            });
+        });
 
         // Upload progress when it is supported. The file loader has the #uploadTotal and #uploaded
         // properties which are used e.g. to display the upload progress bar in the editor
         // user interface.
-        if ( xhr.upload ) {
-            xhr.upload.addEventListener( 'progress', evt => {
-                if ( evt.lengthComputable ) {
+        if (xhr.upload) {
+            xhr.upload.addEventListener('progress', evt => {
+                if (evt.lengthComputable) {
                     loader.uploadTotal = evt.total;
                     loader.uploaded = evt.loaded;
                 }
-            } );
+            });
         }
     }
-    _sendRequest( file ) {
+    _sendRequest(file) {
         // Prepare the form data.
         const data = new FormData();
-        console.log('_sendRequest',file);
-        data.append( 'upload', file );
+        console.log('_sendRequest', file);
+        data.append('upload', file);
 
         // Important note: This is the right place to implement security mechanisms
         // like authentication and CSRF protection. For instance, you can use
@@ -69,22 +69,22 @@ class MyUploadAdapter {
         // the CSRF token generated earlier by your application.
 
         // Send the request.
-        this.xhr.send( data );
+        this.xhr.send(data);
     }
 
     upload() {
         return this.loader.file
-            .then( file => new Promise( ( resolve, reject ) => {
-                console.log('file',file)
+            .then(file => new Promise((resolve, reject) => {
+                console.log('file', file)
                 this._initRequest();
-                this._initListeners( resolve, reject, file );
-                this._sendRequest( file );
-            } ) );
+                this._initListeners(resolve, reject, file);
+                this._sendRequest(file);
+            }));
     }
 
     // Aborts the upload process.
     abort() {
-        if ( this.xhr ) {
+        if (this.xhr) {
             this.xhr.abort();
         }
     }

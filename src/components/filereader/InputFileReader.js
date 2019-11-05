@@ -1,8 +1,10 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 //예제
 //https://medium.com/@habibmahbub/basic-file-reader-with-react-js-80bf48d574da
+//https://dotnetthoughts.net/how-to-upload-multiple-files-with-html5-and-jquery/
 class InputFileReader extends Component {
     constructor() {
         super();
@@ -17,22 +19,58 @@ class InputFileReader extends Component {
         let input = this.refs.input_reader;
         input.click();
     };
-    inputFileChanged(e) {
-        if (window.FileReader) {
-            let file = e.target.files[0];
-            let reader = new FileReader()
-            let self = this;
-            console.log(e.target.files);
-            // reader.onload = function (r) {
-            //     self.setState({
-            //         src: r.target.result
-            //     });
-            // }
-            // reader.readAsDataURL(file);
-            // self.setState({ value: reader });
+    inputFileChanged_new(e) {
+        let files = e.target.files;
+        for (let i = 0; i < files.length; i++) {
+            let file = files[i];
+            /*
+            const xhr = this.xhr = new XMLHttpRequest();
+            xhr.open('POST', '/api/upload/files', true);
+            xhr.responseType = 'json';
+            
+            const data = new FormData();
+            data.append('upload', file);
+            this.xhr.send(data);
+         */
+            const data = new FormData();
+            data.append('upload', file);
+
+            axios.post('/api/upload/files', data)
         }
-        else {
-            alert('Soryy, your browser does\'nt support for preview');
+    }
+    inputFileChanged(e) {
+        console.log('inputFileChanged22!')
+        let files = e.target.files;
+        for (let i = 0; i < files.length; i++) {
+            let file = files[i];
+            const data = new FormData();
+            data.append('upload', file);
+            axios.post('/api/upload', data).then(res => {
+                console.log('success', res)
+            }).catch(e => {
+                console.log(e)
+            })
+        }
+    }
+    inputFileChanged_single(e) {
+        console.log('inputFileChanged!')
+        let files = e.target.files;
+        console.log('files.length', files.length);
+        let self = this;
+        for (let i = 0; i < files.length; i++) {
+            console.log('files[i]', files[i]);
+            let file = files[i];
+            console.log('실행함?', file);
+            let reader = new FileReader();
+            console.log('onload!! 전', file.name);
+            // console.log('reader.onload', f.target.result, file.name)
+            const data = new FormData();
+            data.append('upload', file);
+            axios.post('/api/upload/files', data).then(res => {
+                console.log('success', res)
+            }).catch(e => {
+                console.log(e)
+            })
         }
     }
     //1.더할때, 파일 빼기 목록에서 지우고, 더한다. 2. 뺄때, 빼기목록에 추가
@@ -44,6 +82,7 @@ class InputFileReader extends Component {
                 <button onClick={this.handleClick}>+</button>
                 <button >-</button>
                 <input type="file" ref="input_reader" accept={Array.isArray(accept) ? accept.join(',') : accept} multiple={multiple} capture={capture} style={{ display: 'none' }} onChange={this.inputFileChanged} />
+
             </div>
         );
     }

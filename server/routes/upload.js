@@ -55,25 +55,26 @@ router.post('/', (req, res) => {
 })
 //결재문서 조회시 버튼에 대한 권한, 수정가능 여부
 router.post('/files', (req, res) => {
-    // var form = formidable.IncomingForm();
-    const {
-        data
-    } = req.params;
-    console.log('files', req.query, req.body, data);
+    var form = formidable.IncomingForm();
+    console.log('files', req.body, form);
 
-    // form.parse(req, async (err, fields, files) => {
-    //     // console.log(files, fields, err)
-    //     console.log(files)
-    //     // fs.move(real_path, newPath, function (err) { if (err) { console.error(err); } else { console.log("success!") } });
-    //     //Cannot upload file: Login 화면.PNG.
-    //     // console.log(uploadDir,imageDir,req.headers);
-    //     const url = 'http://192.168.1.176:3000/temp/';
-    //     console.log(`post : url`, url, '여기온거맞지??');
-    //     res.json({
-    //         url
-    //     })
+    form.parse(req, (err, fields, files) => {
+        console.log('여긴 안옴?')
+        console.log('files', files)
+        console.log(fields.upload)
+        let fileList = fields.upload;
+        console.log(fileList.length);
+        // console.log(files)
+        //     // fs.move(real_path, newPath, function (err) { if (err) { console.error(err); } else { console.log("success!") } });
+        //     //Cannot upload file: Login 화면.PNG.
+        //     // console.log(uploadDir,imageDir,req.headers);
+        //     const url = 'http://192.168.1.176:3000/temp/';
+        //     console.log(`post : url`, url, '여기온거맞지??');
+        //     res.json({
+        //         url
+        //     })
 
-    // })
+    })
     res.send({
         data: 'aa'
     })

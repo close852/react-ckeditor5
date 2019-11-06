@@ -16,8 +16,8 @@ const encode = "utf-8";
 //결재문서 조회시 버튼에 대한 권한, 수정가능 여부
 router.post('/', (req, res) => {
     var form = formidable.IncomingForm();
-
     form.parse(req, async (err, fields, files) => {
+        const {filename} = fields;
         var title = files.upload.name;
         let real_path = files.upload.path;
         let size = files.upload.size;

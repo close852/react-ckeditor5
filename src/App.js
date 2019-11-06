@@ -2,7 +2,7 @@ import React from 'react';
 // import CKFinder from '@ckeditor/ckeditor5-ckfinder/src/ckfinder';
 
 import MWEditor from './components/editor/MWEditor'
-import InputFileReader from './components/filereader/InputFileReader';
+import MWFileReader from './components/filereader/MWFileReader';
 function App() {
 
 
@@ -25,11 +25,12 @@ function App() {
     <div>
       <h2>File Upload</h2>
       <div style={styles.root}>
+        <div><input name="title" type="text"></input></div>
         <div id="_editor" style={styles.editor}>
           <MWEditor mode={mode} />
         </div>
         <div id="fileAttach" style={styles.fileattach}>
-          <InputFileReader />
+          <MWFileReader />
         </div>
       </div>
     </div>

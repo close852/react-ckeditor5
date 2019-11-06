@@ -3,11 +3,10 @@ import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import MyUploadAdapter from './MyUploadAdapter'
 import './MWEditor.css'
-function MWEditor({ mode, initContent }) {
-    const [content, setContent] = useState(initContent);
+function MWEditor({ mode, content, setContent }) {
     const _onChange = (event, editor) => {
-        console.log('data : ', editor.getData());
-        console.log('_onChange.', editor);
+        // console.log('data : ', editor.getData());
+        // console.log('_onChange.', editor);
         setContent(editor.getData())
     }
 

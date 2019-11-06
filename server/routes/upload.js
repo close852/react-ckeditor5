@@ -18,6 +18,7 @@ router.post('/', (req, res) => {
     var form = formidable.IncomingForm();
     form.parse(req, async (err, fields, files) => {
         const {filename} = fields;
+        console.log('fields > ',fields)
         var title = files.upload.name;
         let real_path = files.upload.path;
         let size = files.upload.size;
@@ -44,7 +45,8 @@ router.post('/', (req, res) => {
         // fs.move(real_path, newPath, function (err) { if (err) { console.error(err); } else { console.log("success!") } });
         //Cannot upload file: Login 화면.PNG.
         // console.log(uploadDir,imageDir,req.headers);
-        const url = 'http://192.168.1.176:3000/temp/' + newImageName + ext;
+        // const url = 'http://192.168.1.176:3000/temp/' + newImageName + ext;
+        const url = 'http://127.0.0.1:3000/temp/' + newImageName + ext;
         console.log(`post : url`, url, '여기온거맞지??');
         res.json({
             url

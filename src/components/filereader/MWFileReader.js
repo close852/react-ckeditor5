@@ -1,14 +1,23 @@
 
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import axios from 'axios'
 //예제
 //https://medium.com/@habibmahbub/basic-file-reader-with-react-js-80bf48d574da
 //https://dotnetthoughts.net/how-to-upload-multiple-files-with-html5-and-jquery/
-function MWFileReader({ accept, capture, multiple }) {
-    const refReader = useRef(null);
-    const [fileQueue, setFileQueue] = useState([]);
-
+function MWFileReader({ accept, capture, multiple, fileQueue, setFileQueue }) {
+    const useStyles = makeStyles(theme => ({
+        button: {
+          margin: theme.spacing(1),
+        },
+        input: {
+          display: 'none',
+        },
+      }));
+    const classes = useStyles();
+      
     const styles = {
         root: {
             display: 'flex',
@@ -49,22 +58,19 @@ function MWFileReader({ accept, capture, multiple }) {
             let file = files[i];
             _addFileQueue(file);
 
-            /*
             const data = new FormData();
             data.append('upload', file);
             data.append('filename', '이름1');
+            data.append('test', 'test');
+
+            console.log('data',data);
             axios.post('/api/upload', data).then(res => {
                 console.log('success', res)
             }).catch(e => {
                 console.log(e)
             })
-            */
         }
     }
-    const addFileHandler = () => {
-        let input = refReader.current;
-        input.click();
-    };
 
     const removeFileHandler = () => {
         let files = document.getElementsByName("filechk");
@@ -128,11 +134,20 @@ function MWFileReader({ accept, capture, multiple }) {
     //3. 업로드시, 빼기목록에 없는 애들만 넘김
     return (
         <div style={styles.root}>
-            <input type="file" ref={refReader} onChange={inputFileChanged} accept={Array.isArray(accept) ? accept.join(',') : accept} multiple={multiple} capture={capture} style={{ display: 'none' }} />
+            <input type="file" id="contained-button-file"  onChange={inputFileChanged} accept={Array.isArray(accept) ? accept.join(',') : accept} multiple={multiple} capture={capture} style={{ display: 'none' }} />
             <div style={styles.fileattach} onDrop={dropHandler} onDragOver={dragOverHandler}>{fileQueueMap}</div>
             <div style={styles.fileselect}>
-                <button style={styles.button} onClick={addFileHandler}>+</button>
-                <button style={styles.button} onClick={removeFileHandler}>-</button>
+                <label htmlFor="contained-button-file">
+                    <Button variant="outlined" component="span" className={classes.button}>
+                        +
+                    </Button>
+                </label>
+                {/* <button style={styles.button} onClick={removeFileHandler}>-</button> */}
+                {/* <span onClick={removeFileHandler}>-</span> */}
+                <Button variant="outlined" component="span" className={classes.button} onClick={removeFileHandler}>
+                    -
+                </Button>
+
             </div>
         </div>
     );

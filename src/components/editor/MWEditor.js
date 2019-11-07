@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 // import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize';
 
 import CKEditor from '@ckeditor/ckeditor5-react';
@@ -7,7 +7,6 @@ import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor'
 import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';     // <--- ADDED
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
-import CKFinder from '@ckeditor/ckeditor5-ckfinder/src/ckfinder';
 import Link from '@ckeditor/ckeditor5-link/src/link';
 import List from '@ckeditor/ckeditor5-list/src/list';
 import Image from '@ckeditor/ckeditor5-image/src/image';
@@ -19,7 +18,6 @@ import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize';
 import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
 import Table from '@ckeditor/ckeditor5-table/src/table';
 
-import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
 import Heading from '@ckeditor/ckeditor5-heading/src/heading';
@@ -31,28 +29,24 @@ import MyUploadAdapter from './MyUploadAdapter'
 import './MWEditor.css'
 function MWEditor({ mode, content, setContent }) {
     const _onChange = (event, editor) => {
-        // console.log('data : ', editor.getData());
-        // console.log('_onChange.', editor);
         setContent(editor.getData())
     }
 
     const _onBlur = (event, editor) => {
-        console.log('Blur.', editor);
+        console.log('Blur.', );
     }
 
     const _onFocus = (event, editor) => {
-        console.log('_onFocus.', editor);
+        console.log('_onFocus.', );
     }
     const _init = (editor) => {
         // You can store the "editor" and use when it is needed.
-        console.log('Editor is ready to use!', editor);
+        console.log('Editor is ready to use!', );
         editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
             return new MyUploadAdapter(loader);
         };
-        console.log('editor.ui.componentFactory',editor.ui.componentFactory.names())
     }
-    console.log('mode',mode , mode === "edit")
-    const defaultToolbar = mode === "edit" ? ['highlight','heading', '|', 'bold', 'italic', '|', 'link', 'bulletedList', 'numberedList', 'blockQuote', '|', 'imageUpload', 'insertTable', '|', 'undo', 'redo','|','alignment:left', 'alignment:right', 'alignment:center', 'alignment:justify'] : [];
+    const defaultToolbar = mode === "edit" ? ['heading', '|', 'bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'imageUpload', 'insertTable','|','alignment:left', 'alignment:right', 'alignment:center', 'alignment:justify', 'link', 'blockQuote', '|', 'undo', 'redo','highlight'] : [];
     const editorConfig = {
         plugins:[Essentials,Highlight,Table,Link,Paragraph,Alignment,Heading,Image,Bold,ImageResize,Italic,ImageUpload,ImageToolbar,ImageStyle,ImageCaption,BlockQuote,List],
         toolbar: defaultToolbar,
@@ -63,15 +57,9 @@ function MWEditor({ mode, content, setContent }) {
                 { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
             ]
         },
-        ckfinder: {
-            uploadUrl: '/api/upload',
-            options: {
-                resourceType: 'Images'
-            }
-        },
         image: {
             toolbar: [ 'imageTextAlternative', '|', 'imageStyle:alignLeft', 'imageStyle:full', 'imageStyle:alignRight' ],
-            resizeUnit: 'px',
+            resizeUnit: '%',
             styles: [
                 // This option is equal to a situation where no style is applied.
                 'full',

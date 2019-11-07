@@ -71,7 +71,6 @@ function BbsView() {
       console.log(pair[0] + ',, ' + pair[1]);
     }
 
-
     axios.post('/api/article',data)
     .then(res=>{
       console.log(res)
@@ -119,7 +118,7 @@ function BbsView() {
           <input type="hidden" id="deptid" name="deptid" value="DEPT01" />
         </div>
         <div id="_editor" style={styles.editor}>
-        <input type="hidden" id="content" name="content" value={content} />
+          <input type="hidden" id="content" name="content" value={content} />
           <MWEditor mode={mode} content={content} setContent={setContent} />
         </div>
         <div id="fileAttach" style={styles.fileattach}>

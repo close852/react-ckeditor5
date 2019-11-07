@@ -133,8 +133,8 @@ function MWFileReader({ accept, capture, multiple, fileQueue, setFileQueue }) {
             }
         } else {
             // Use DataTransfer interface to access the file(s)
-            for (var i = 0; i < e.dataTransfer.files.length; i++) {
-                var file = e.dataTransfer.files[i];
+            for (let i = 0; i < e.dataTransfer.files.length; i++) {
+                let file = e.dataTransfer.files[i];
                 _addFileQueue(file);
                 console.log('2> ... file[' + i + '].name = ' + e.dataTransfer.files[i].name);
             }

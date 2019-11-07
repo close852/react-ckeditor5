@@ -5,6 +5,7 @@ const router = express.Router();
 const encode="utf-8";
 //결재문서 조회시 버튼에 대한 권한, 수정가능 여부
 router.get('/',   (req, res) => {
+    console.log('여긴데..')
     const {
         appid,
         formid

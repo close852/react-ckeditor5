@@ -10,14 +10,14 @@ import axios from 'axios'
 function MWFileReader({ accept, capture, multiple, fileQueue, setFileQueue }) {
     const useStyles = makeStyles(theme => ({
         button: {
-          margin: theme.spacing(1),
+            margin: theme.spacing(1),
         },
         input: {
-          display: 'none',
+            display: 'none',
         },
-      }));
+    }));
     const classes = useStyles();
-      
+
     const styles = {
         root: {
             display: 'flex',
@@ -45,11 +45,26 @@ function MWFileReader({ accept, capture, multiple, fileQueue, setFileQueue }) {
         checkbox: {
             width: '15px',
             height: '15px'
+        },
+        fileItem: {
+            width:'100%',
+            display:'flex',
+            flexBasis:'auto'
+        },
+        fileTitle: {
+            width:'100%',
         }
+
     }
 
     const fileQueueMap = fileQueue.map(file => (
-        <div key={file.name}><label><input style={styles.checkbox} name="filechk" type='checkbox' value={file.name} />{file.name} {Math.round(Number(file.size) / 1024, 2) + 'KB'}</label></div>
+        <div key={file.name} >
+            <label style={styles.fileItem}>
+                <input style={styles.checkbox} name="filechk" type='checkbox' value={file.name} />
+                <span style={styles.fileTitle}>{file.name}</span>
+                <span >{Math.round(Number(file.size) / 1024, 2) + 'KB'}</span>
+            </label>
+        </div>
     ))
 
     const inputFileChanged = (e) => {
@@ -63,7 +78,7 @@ function MWFileReader({ accept, capture, multiple, fileQueue, setFileQueue }) {
             data.append('filename', '이름1');
             data.append('test', 'test');
 
-            console.log('data',data);
+            console.log('data', data);
             axios.post('/api/upload', data).then(res => {
                 console.log('success', res)
             }).catch(e => {
@@ -134,7 +149,7 @@ function MWFileReader({ accept, capture, multiple, fileQueue, setFileQueue }) {
     //3. 업로드시, 빼기목록에 없는 애들만 넘김
     return (
         <div style={styles.root}>
-            <input type="file" id="contained-button-file"  onChange={inputFileChanged} accept={Array.isArray(accept) ? accept.join(',') : accept} multiple={multiple} capture={capture} style={{ display: 'none' }} />
+            <input type="file" id="contained-button-file" onChange={inputFileChanged} accept={Array.isArray(accept) ? accept.join(',') : accept} multiple={multiple} capture={capture} style={{ display: 'none' }} />
             <div style={styles.fileattach} onDrop={dropHandler} onDragOver={dragOverHandler}>{fileQueueMap}</div>
             <div style={styles.fileselect}>
                 <label htmlFor="contained-button-file">

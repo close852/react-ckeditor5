@@ -815,6 +815,13 @@
     "@ckeditor/ckeditor5-core" "^15.0.0"
     "@ckeditor/ckeditor5-upload" "^15.0.0"
 
+"@ckeditor/ckeditor5-alignment@^15.0.0":
+  version "15.0.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-alignment/-/ckeditor5-alignment-15.0.0.tgz#907594af3cd5739e0eec2d8a9d3572c1a44fdbc3"
+  dependencies:
+    "@ckeditor/ckeditor5-core" "^15.0.0"
+    "@ckeditor/ckeditor5-ui" "^15.0.0"
+
 "@ckeditor/ckeditor5-build-classic@^15.0.0":
   version "15.0.0"
   resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-build-classic/-/ckeditor5-build-classic-15.0.0.tgz#fb036552160d4511cafb8873363075efa7805128"
@@ -829,11 +836,29 @@
     "@ckeditor/ckeditor5-link" "^15.0.0"
     "@ckeditor/ckeditor5-ui" "^15.0.0"
 
+"@ckeditor/ckeditor5-clipboard@^15.0.0":
+  version "15.0.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-clipboard/-/ckeditor5-clipboard-15.0.0.tgz#44c6f6d631645c0827adc0f2b5d43727d4324cd1"
+  dependencies:
+    "@ckeditor/ckeditor5-core" "^15.0.0"
+    "@ckeditor/ckeditor5-engine" "^15.0.0"
+    "@ckeditor/ckeditor5-utils" "^15.0.0"
+
 "@ckeditor/ckeditor5-core@^15.0.0":
   version "15.0.0"
   resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-core/-/ckeditor5-core-15.0.0.tgz#891916804c8376f00b93dea0ed3af704725420e8"
   dependencies:
     "@ckeditor/ckeditor5-engine" "^15.0.0"
+    "@ckeditor/ckeditor5-utils" "^15.0.0"
+    lodash-es "^4.17.10"
+
+"@ckeditor/ckeditor5-editor-classic@^15.0.0":
+  version "15.0.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-editor-classic/-/ckeditor5-editor-classic-15.0.0.tgz#00b45af6565a60f063aa6960fed37e0a394739d6"
+  dependencies:
+    "@ckeditor/ckeditor5-core" "^15.0.0"
+    "@ckeditor/ckeditor5-engine" "^15.0.0"
+    "@ckeditor/ckeditor5-ui" "^15.0.0"
     "@ckeditor/ckeditor5-utils" "^15.0.0"
     lodash-es "^4.17.10"
 
@@ -843,6 +868,24 @@
   dependencies:
     "@ckeditor/ckeditor5-utils" "^15.0.0"
     lodash-es "^4.17.10"
+
+"@ckeditor/ckeditor5-enter@^15.0.0":
+  version "15.0.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-enter/-/ckeditor5-enter-15.0.0.tgz#b9b44bdf1fac07343db505f984c86f40a0047359"
+  dependencies:
+    "@ckeditor/ckeditor5-core" "^15.0.0"
+    "@ckeditor/ckeditor5-engine" "^15.0.0"
+    "@ckeditor/ckeditor5-utils" "^15.0.0"
+
+"@ckeditor/ckeditor5-essentials@^15.0.0":
+  version "15.0.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-essentials/-/ckeditor5-essentials-15.0.0.tgz#ff21c2c0afa78055a3cb62b09b73d4859b23df6a"
+  dependencies:
+    "@ckeditor/ckeditor5-clipboard" "^15.0.0"
+    "@ckeditor/ckeditor5-core" "^15.0.0"
+    "@ckeditor/ckeditor5-enter" "^15.0.0"
+    "@ckeditor/ckeditor5-typing" "^15.0.0"
+    "@ckeditor/ckeditor5-undo" "^15.0.0"
 
 "@ckeditor/ckeditor5-image@^15.0.0":
   version "15.0.0"
@@ -864,11 +907,28 @@
     "@ckeditor/ckeditor5-ui" "^15.0.0"
     lodash-es "^4.17.10"
 
+"@ckeditor/ckeditor5-paragraph@^15.0.0":
+  version "15.0.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-paragraph/-/ckeditor5-paragraph-15.0.0.tgz#1b44d62d13bcf9d561572b9a20eef97ce8ccf6e1"
+  dependencies:
+    "@ckeditor/ckeditor5-core" "^15.0.0"
+    "@ckeditor/ckeditor5-ui" "^15.0.0"
+    "@ckeditor/ckeditor5-utils" "^15.0.0"
+
 "@ckeditor/ckeditor5-react@^1.1.3":
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-react/-/ckeditor5-react-1.1.3.tgz#7d79f3d5390f3f8eaab53ef03cf97fd782c56318"
   dependencies:
     prop-types "^15.6.1"
+
+"@ckeditor/ckeditor5-typing@^15.0.0":
+  version "15.0.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-typing/-/ckeditor5-typing-15.0.0.tgz#108a5a181edeca17bcb2988f1c510f8a7b5d60bf"
+  dependencies:
+    "@ckeditor/ckeditor5-core" "^15.0.0"
+    "@ckeditor/ckeditor5-engine" "^15.0.0"
+    "@ckeditor/ckeditor5-utils" "^15.0.0"
+    lodash-es "^4.17.10"
 
 "@ckeditor/ckeditor5-ui@^15.0.0":
   version "15.0.0"
@@ -877,6 +937,14 @@
     "@ckeditor/ckeditor5-core" "^15.0.0"
     "@ckeditor/ckeditor5-utils" "^15.0.0"
     lodash-es "^4.17.10"
+
+"@ckeditor/ckeditor5-undo@^15.0.0":
+  version "15.0.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-undo/-/ckeditor5-undo-15.0.0.tgz#7bc4595d7f582a66b32ca89460c18759a039cafd"
+  dependencies:
+    "@ckeditor/ckeditor5-core" "^15.0.0"
+    "@ckeditor/ckeditor5-engine" "^15.0.0"
+    "@ckeditor/ckeditor5-ui" "^15.0.0"
 
 "@ckeditor/ckeditor5-upload@^15.0.0":
   version "15.0.0"
@@ -1104,6 +1172,12 @@
     popper.js "^1.14.1"
     prop-types "^15.7.2"
     react-transition-group "^4.3.0"
+
+"@material-ui/icons@^4.5.1":
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/@material-ui/icons/-/icons-4.5.1.tgz#6963bad139e938702ece85ca43067688018f04f8"
+  dependencies:
+    "@babel/runtime" "^7.4.4"
 
 "@material-ui/styles@^4.6.0":
   version "4.6.0"
@@ -1851,7 +1925,7 @@ babel-jest@^24.9.0:
     chalk "^2.4.2"
     slash "^2.0.0"
 
-babel-loader@8.0.6:
+babel-loader@8.0.6, babel-loader@^8.0.6:
   version "8.0.6"
   resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-8.0.6.tgz#e33bdb6f362b03f4bb141a0c21ab87c501b70dfb"
   dependencies:
@@ -7155,7 +7229,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.3"
 
-prop-types@^15.5.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   dependencies:
@@ -7348,13 +7422,6 @@ react-dom@^16.11.0:
 react-error-overlay@^6.0.3:
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.3.tgz#c378c4b0a21e88b2e159a3e62b2f531fd63bf60d"
-
-react-file-reader@^1.1.4:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/react-file-reader/-/react-file-reader-1.1.4.tgz#1838f1f3fa70dcfdef4ef525d74dda3c6312089a"
-  dependencies:
-    prop-types "^15.5.0"
-    uuid4 "^1.0.0"
 
 react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6:
   version "16.11.0"
@@ -8778,10 +8845,6 @@ utila@^0.4.0, utila@~0.4:
 utils-merge@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
-
-uuid4@^1.0.0:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/uuid4/-/uuid4-1.1.4.tgz#80fa0618749110bdb8aa47cc2cc2167c6331f4eb"
 
 uuid@^3.0.1, uuid@^3.3.2:
   version "3.3.3"

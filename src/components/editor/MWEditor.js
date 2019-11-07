@@ -52,9 +52,9 @@ function MWEditor({ mode, content, setContent }) {
         console.log('editor.ui.componentFactory',editor.ui.componentFactory.names())
     }
     console.log('mode',mode , mode === "edit")
-    const defaultToolbar = mode === "edit" ? ['heading', '|', 'bold', 'italic', '|', 'link', 'bulletedList', 'numberedList', 'blockQuote', '|', 'imageUpload', 'insertTable', '|', 'undo', 'redo','|','alignment:left', 'alignment:right', 'alignment:center', 'alignment:justify'] : [];
+    const defaultToolbar = mode === "edit" ? ['highlight','heading', '|', 'bold', 'italic', '|', 'link', 'bulletedList', 'numberedList', 'blockQuote', '|', 'imageUpload', 'insertTable', '|', 'undo', 'redo','|','alignment:left', 'alignment:right', 'alignment:center', 'alignment:justify'] : [];
     const editorConfig = {
-        plugins:[Essentials,Table,Link,Paragraph,Alignment,Heading,Image,Bold,ImageResize,Italic,ImageUpload,ImageToolbar,ImageStyle,ImageCaption,BlockQuote,List],
+        plugins:[Essentials,Highlight,Table,Link,Paragraph,Alignment,Heading,Image,Bold,ImageResize,Italic,ImageUpload,ImageToolbar,ImageStyle,ImageCaption,BlockQuote,List],
         toolbar: defaultToolbar,
         heading: {
             options: [
@@ -85,6 +85,53 @@ function MWEditor({ mode, content, setContent }) {
         alignment: {
             options: [ 'left', 'right','center','justify' ]
         },
+        highlight: {
+            options: [
+              {
+                  model: 'redPen',
+                  class: 'pen-red',
+                  title: 'Red pen',
+                  color: 'var(--ck-highlight-pen-red)',
+                  type: 'pen'
+              },
+              {
+                  model: 'greenPen',
+                  class: 'pen-green',
+                  title: 'Green pen',
+                  color: 'var(--ck-highlight-pen-green)',
+                  type: 'pen'
+              },
+              {
+                  model: 'yellowMarker',
+                  class: 'marker-yellow',
+                  title: 'Yellow marker',
+                  color: 'var(--ck-highlight-marker-yellow)',
+                  type: 'marker'
+              },
+              {
+                  model: 'greenMarker',
+                  class: 'marker-green',
+                  title: 'Green marker',
+                  color: 'var(--ck-highlight-marker-green)',
+                  type: 'marker'
+              },
+              {
+                  model: 'pinkMarker',
+                  class: 'marker-pink',
+                  title: 'Pink marker',
+                  color: 'var(--ck-highlight-marker-pink)',
+                  type: 'marker'
+              },
+              {
+                  model: 'blueMarker',
+                  class: 'marker-blue',
+                  title: 'Blue marker',
+                  color: 'var(--ck-highlight-marker-blue)',
+                  type: 'marker'
+              },
+            ]
+          },
+
     }
     return (
         <CKEditor
